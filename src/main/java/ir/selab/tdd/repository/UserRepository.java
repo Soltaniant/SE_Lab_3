@@ -28,8 +28,7 @@ public class UserRepository {
     }
 
     public User getUserByEmail(String email) {
-        // TODO: implement
-        return null;
+        return usersByEmail.get(email);
     }
 
     public boolean addUser(User user) {
