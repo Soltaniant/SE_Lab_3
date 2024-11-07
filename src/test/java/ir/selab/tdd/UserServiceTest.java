@@ -1,6 +1,5 @@
 package ir.selab.tdd;
 
-import ir.selab.tdd.domain.User;
 import ir.selab.tdd.repository.UserRepository;
 import ir.selab.tdd.service.UserService;
 import org.junit.Before;
@@ -8,7 +7,8 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class UserServiceTest {
     private UserService userService;
@@ -22,7 +22,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void createNewValidUser__ShouldSuccess() {
+    public void registerNewUser__ShouldSuccess() {
         String username = "reza";
         String password = "123abc";
         boolean b = userService.registerUser(username, password);
@@ -30,7 +30,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void createNewDuplicateUser__ShouldFail() {
+    public void registerDuplicateUser__ShouldFail() {
         String username = "ali";
         String password = "123abc";
         boolean b = userService.registerUser(username, password);
