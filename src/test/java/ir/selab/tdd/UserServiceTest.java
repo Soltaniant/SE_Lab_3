@@ -38,7 +38,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void registerUserWithEmail__ShouldSuccess() {
+    public void registerWithEmail__ShouldSuccess() {
         String username = "reza";
         String password = "123abc";
         String email = "reza@gmail.com";
