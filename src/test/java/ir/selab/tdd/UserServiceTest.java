@@ -84,4 +84,10 @@ public class UserServiceTest {
         boolean login = userService.loginWithEmail("admin@gmail.com", "wrong-password");
         assertFalse(login);
     }
+
+    @Test
+    public void loginWithEmail_WhenUserDoesNotExists_ShouldFail() {
+        boolean login = userService.loginWithEmail("random@gmail.com", "1234");
+        assertFalse(login);
+    }
 }
