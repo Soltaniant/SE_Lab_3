@@ -47,6 +47,15 @@ public class UserServiceTest {
     }
 
     @Test
+    public void registerWithEmail_WhenEmailIsDuplicated_ShouldFail() {
+        String password = "123abc";
+        String email = "reza@gmail.com";
+        userService.registerUser("user1", password, email);
+        boolean registered = userService.registerUser("user2", password, email);
+        assertFalse(registered);
+    }
+
+    @Test
     public void loginWithValidUsernameAndPassword__ShouldSuccess() {
         boolean login = userService.loginWithUsername("admin", "1234");
         assertTrue(login);
