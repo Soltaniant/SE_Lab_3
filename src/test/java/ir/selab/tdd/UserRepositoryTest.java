@@ -73,6 +73,30 @@ public class UserRepositoryTest {
     }
 
     @Test
+    public void addNewUser__ShouldAddToUsernamesMap() {
+        String username = "reza";
+        String password = "123abc";
+        User newUser = new User(username, password);
+
+        repository.addUser(newUser);
+
+        assertEquals(newUser, repository.getUserByUsername(username));
+    }
+
+    @Test
+    public void addNewUser__ShouldAddToEmailsMap() {
+        String username = "reza";
+        String password = "123abc";
+        String email = "email@gmail.com";
+        User newUser = new User(username, password);
+        newUser.setEmail(email);
+
+        repository.addUser(newUser);
+
+        assertEquals(newUser, repository.getUserByEmail(email));
+    }
+
+    @Test
     public void addUser_WhenUsernameIsDuplicate_ShouldFail() {
         String username = "reza";
         String password = "123abc";
