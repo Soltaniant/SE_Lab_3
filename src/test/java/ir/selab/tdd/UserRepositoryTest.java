@@ -12,11 +12,12 @@ import static org.junit.Assert.*;
 
 public class UserRepositoryTest {
     private UserRepository repository;
+    private User admin = new User("admin", "1234", "admin@gmail.com");
 
     @Before
     public void setUp() {
         List<User> userList = Arrays.asList(
-                new User("admin", "1234"),
+                admin,
                 new User("ali", "qwert"),
                 new User("mohammad", "123asd"));
         repository = new UserRepository(userList);
@@ -53,6 +54,11 @@ public class UserRepositoryTest {
         assertThrows(IllegalArgumentException.class, () -> {
             new UserRepository(List.of(user1, user2));
         });
+    }
+
+    @Test
+    public void getUserByEmail__ShouldAddToUsernamesMap() {
+        assertEquals(admin, repository.getUserByEmail("admin@gmail.com"));
     }
 
     @Test
