@@ -106,4 +106,17 @@ public class UserRepositoryTest {
         assertTrue(repository.addUser(user1));
         assertFalse(repository.addUser(user2));
     }
+
+    @Test
+    public void addUser_WhenEmailIsDuplicate_ShouldFail() {
+        String password = "123abc";
+        String email = "duplicated@gmail.com";
+        User user1 = new User("user1", password);
+        User user2 = new User("user2", password);
+        user1.setEmail(email);
+        user2.setEmail(email);
+
+        assertTrue(repository.addUser(user1));
+        assertFalse(repository.addUser(user2));
+    }
 }
