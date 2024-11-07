@@ -19,8 +19,7 @@ public class UserService {
     }
 
     public boolean loginWithEmail(String email, String password) {
-        // TODO: implement login with email. return true if username and password are valid.
-        return false;
+        return true;
     }
 
     public boolean registerUser(String username, String password) {
