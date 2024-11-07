@@ -19,7 +19,10 @@ public class UserService {
     }
 
     public boolean loginWithEmail(String email, String password) {
-        return true;
+        User user = repository.getUserByEmail(email);
+        if (user == null)
+            return false;
+        return user.getPassword().equals(password);
     }
 
     public boolean registerUser(String username, String password) {
