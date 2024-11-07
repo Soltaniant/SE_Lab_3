@@ -37,9 +37,11 @@ public class UserRepository {
             return false;
 
         if (user.getEmail() != null) {
+            if (usersByEmail.containsKey(user.getEmail()))
+                return false;
             usersByEmail.put(user.getEmail(), user);
         }
-        // TODO: implement check email duplication
+
         usersByUserName.put(user.getUsername(), user);
         return true;
     }
