@@ -62,6 +62,11 @@ public class UserRepositoryTest {
     }
 
     @Test
+    public void getUserByEmail_WhenUserDoesNotExists_ShouldAddToUsernamesMap() {
+        assertNull(repository.getUserByEmail("random@gmail.com"));
+    }
+
+    @Test
     public void addNewUser__ShouldIncreaseUserCount() {
         int oldUserCount = repository.getUserCount();
 
