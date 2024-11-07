@@ -73,7 +73,6 @@ public class UserRepositoryTest {
         // Given
         String username = "reza";
         String password = "123abc";
-        String email = "reza@sharif.edu";
         User newUser = new User(username, password);
 
         // When
