@@ -71,4 +71,15 @@ public class UserRepositoryTest {
         // Then
         assertEquals(oldUserCount + 1, repository.getUserCount());
     }
+
+    @Test
+    public void addUser_WhenUsernameIsDuplicate_ShouldFail() {
+        String username = "reza";
+        String password = "123abc";
+        User user1 = new User(username, password);
+        User user2 = new User(username, password);
+
+        assertTrue(repository.addUser(user1));
+        assertFalse(repository.addUser(user2));
+    }
 }
