@@ -17,7 +17,7 @@ public class UserServiceTest {
     public void setUp() {
         UserRepository userRepository = new UserRepository(List.of());
         userService = new UserService(userRepository);
-        userService.registerUser("admin", "1234");
+        userService.registerUser("admin", "1234", "admin@gmail.com");
         userService.registerUser("ali", "qwert");
     }
 
@@ -35,6 +35,15 @@ public class UserServiceTest {
         String password = "123abc";
         boolean b = userService.registerUser(username, password);
         assertFalse(b);
+    }
+
+    @Test
+    public void registerUserWithEmail__ShouldSuccess() {
+        String username = "reza";
+        String password = "123abc";
+        String email = "reza@gmail.com";
+        boolean b = userService.registerUser(username, password, email);
+        assertTrue(b);
     }
 
     @Test
