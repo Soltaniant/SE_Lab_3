@@ -2,7 +2,6 @@ package ir.selab.tdd.repository;
 
 import ir.selab.tdd.domain.User;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

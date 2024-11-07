@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class UserRepositoryTest {
     private UserRepository repository;
-    private User admin = new User("admin", "1234", "admin@gmail.com");
+    private final User admin = new User("admin", "1234", "admin@gmail.com");
 
     @Before
     public void setUp() {
@@ -41,9 +41,7 @@ public class UserRepositoryTest {
     public void createRepositoryWithDuplicateUsers__ShouldThrowException() {
         User user1 = new User("ali", "1234");
         User user2 = new User("ali", "4567");
-        assertThrows(IllegalArgumentException.class, () -> {
-            new UserRepository(List.of(user1, user2));
-        });
+        assertThrows(IllegalArgumentException.class, () -> new UserRepository(List.of(user1, user2)));
     }
 
     @Test
@@ -51,9 +49,7 @@ public class UserRepositoryTest {
         String email = "email";
         User user1 = new User("user1", "1234", email);
         User user2 = new User("user2", "4567", email);
-        assertThrows(IllegalArgumentException.class, () -> {
-            new UserRepository(List.of(user1, user2));
-        });
+        assertThrows(IllegalArgumentException.class, () -> new UserRepository(List.of(user1, user2)));
     }
 
     @Test
