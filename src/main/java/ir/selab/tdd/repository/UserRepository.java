@@ -16,8 +16,11 @@ public class UserRepository {
             throw new IllegalArgumentException("Two users can not have the same username");
         }));
 
-        // TODO: implement (Some users may not have email!)
-        this.usersByEmail = new HashMap<>();
+        this.usersByEmail = users.stream()
+                .filter(u -> u.getEmail() != null)
+                .collect(Collectors.toMap(User::getEmail, u -> u, (u1, u2) -> {
+            throw new IllegalArgumentException("Two users can not have the same email");
+        }));
     }
 
     public User getUserByUsername(String username) {
