@@ -134,7 +134,7 @@ public class UserRepositoryTest {
 
     @Test
     public void removeNotExistingUser__ShouldSuccess() {
-        boolean remove = repository.removeUser("mohajer");
+        boolean remove = repository.removeUser("mohajerani");
         assertFalse(remove);
     }
 }
