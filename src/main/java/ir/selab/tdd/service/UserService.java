@@ -9,6 +9,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository repository;
+    private final List<User> users;
 
     public boolean loginWithUsername(String username, String password) {
         User userByUsername = repository.getUserByUsername(username);

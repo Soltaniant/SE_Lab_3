@@ -92,8 +92,16 @@ public class UserServiceTest {
     }
 
     @Test
-    public void removeExistingUser__ShouldSuccess(){
+    public void removeExistingUser__ShouldSuccess() {
         boolean remove = userService.removeUser("admin");
         assertTrue(remove);
     }
+
+    @Test
+    public void removeNotExistingUser__ShouldSuccess() {
+        boolean remove = userService.removeUser("mohajer");
+        assertFalse(remove);
+    }
+
+    
 }
