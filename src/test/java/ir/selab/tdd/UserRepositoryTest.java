@@ -125,4 +125,16 @@ public class UserRepositoryTest {
         assertTrue(repository.addUser(user1));
         assertFalse(repository.addUser(user2));
     }
+
+    @Test
+    public void removeExistingUser__ShouldSuccess() {
+        boolean remove = repository.removeUser("ali");
+        assertTrue(remove);
+    }
+
+    @Test
+    public void removeNotExistingUser__ShouldSuccess() {
+        boolean remove = repository.removeUser("mohajer");
+        assertFalse(remove);
+    }
 }
