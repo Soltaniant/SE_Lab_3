@@ -90,4 +90,10 @@ public class UserServiceTest {
         boolean login = userService.loginWithEmail("random@gmail.com", "1234");
         assertFalse(login);
     }
+
+    @Test
+    public void removeExistingUser__ShouldSuccess(){
+        boolean remove = userService.removeUser("admin");
+        assertTrue(remove);
+    }
 }
