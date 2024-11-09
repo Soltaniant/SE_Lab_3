@@ -58,4 +58,19 @@ public class UserRepository {
         return usersByUserName.size();
     }
 
+    public boolean changeUserEmail(String username, String newEmail) {
+    User user = getUserByUsername(username);
+    if (user == null)
+        return false;
+
+    if (newEmail != null && usersByEmail.containsKey(newEmail))
+        return false;
+
+    usersByEmail.remove(user.getEmail());
+    user.setEmail(newEmail);
+    usersByEmail.put(newEmail, user);
+    return true;
+}
+
+
 }
