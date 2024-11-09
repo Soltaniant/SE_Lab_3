@@ -138,5 +138,20 @@ public class UserRepositoryTest {
         assertFalse(remove);
     }
 
+    @Test
+    public void changeUserEmail_WhenUserExists_ShouldChangeEmail() {
+    String newEmail = "newadmin@gmail.com";
+    assertTrue(repository.changeUserEmail("admin", newEmail));
+    assertEquals(newEmail, repository.getUserByUsername("admin").getEmail());
+    assertEquals(admin, repository.getUserByEmail(newEmail));
+    }
+
+    @Test
+    public void changeUserEmail_WhenUserDoesNotExist_ShouldFail() {
+    String newEmail = "nonexistent@gmail.com";
+    assertFalse(repository.changeUserEmail("nonexistent", newEmail));
+    }
+
+
 
 }

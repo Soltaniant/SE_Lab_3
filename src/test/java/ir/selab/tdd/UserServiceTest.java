@@ -103,5 +103,21 @@ public class UserServiceTest {
         assertFalse(remove);
     }
 
+    @Test
+    public void changeUserEmail__ShouldSuccess() {
+    String newEmail = "newadmin@gmail.com";
+    boolean changed = userService.changeUserEmail("admin", newEmail);
+    assertTrue(changed);
+    assertTrue(userService.loginWithEmail(newEmail, "1234"));
+    }
+
+    @Test
+    public void changeUserEmail_WhenUserDoesNotExist__ShouldFail() {
+    String newEmail = "nonexistent@gmail.com";
+    boolean changed = userService.changeUserEmail("nonexistent", newEmail);
+    assertFalse(changed);
+    }
+
+
     
 }
