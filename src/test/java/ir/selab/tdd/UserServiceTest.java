@@ -1,5 +1,6 @@
 package ir.selab.tdd;
 
+import ir.selab.tdd.domain.User;
 import ir.selab.tdd.repository.UserRepository;
 import ir.selab.tdd.service.UserService;
 import org.junit.Before;
@@ -7,8 +8,8 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class UserServiceTest {
     private UserService userService;
@@ -101,6 +102,20 @@ public class UserServiceTest {
     public void removeNotExistingUser__ShouldSuccess() {
         boolean remove = userService.removeUser("mohajer");
         assertFalse(remove);
+    }
+
+    @Test
+    public void getAllUsers__ShouldSuccess() {
+
+        List<User> users = userService.getAllUsers();
+        System.out.println(users);
+        assertEquals(2, users.size());
+        assertEquals("admin", users.get(0).getUsername());
+        assertEquals("1234", users.get(0).getPassword());
+        assertEquals("admin@gmail.com", users.get(0).getEmail());
+
+        assertEquals("ali", users.get(1).getUsername());
+        assertEquals("qwert", users.get(1).getPassword());
     }
 
     @Test
