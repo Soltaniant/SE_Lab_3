@@ -5,6 +5,7 @@ import ir.selab.tdd.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class UserService {
@@ -41,8 +42,9 @@ public class UserService {
     }
 
     public List<User> getAllUsers() {
-        // TODO: implement
-        return null;
+        return repository.findAll().stream()
+                .map(user -> new User(user.getUsername(), user.getPassword(), user.getEmail()))
+                .collect(Collectors.toList());
     }
 
     public boolean changeUserEmail(String username, String newEmail) {
