@@ -71,6 +71,9 @@ public class UserRepository {
     usersByEmail.put(newEmail, user);
     return true;
 }
+    public List<User> findAll() {
+        return new ArrayList<>(usersByUserName.values());
+    }
 
 
 }

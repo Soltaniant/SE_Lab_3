@@ -139,6 +139,20 @@ public class UserRepositoryTest {
     }
 
     @Test
+    public void findAll__ShouldSuccess() {
+
+        List<User> users = repository.findAll();
+        System.out.println(users);
+        assertEquals(3, users.size());
+        assertEquals("admin", users.get(0).getUsername());
+        assertEquals("1234", users.get(0).getPassword());
+        assertEquals("admin@gmail.com", users.get(0).getEmail());
+
+        assertEquals("mohammad", users.get(1).getUsername());
+        assertEquals("123asd", users.get(1).getPassword());
+    }
+
+    @Test
     public void changeUserEmail_WhenUserExists_ShouldChangeEmail() {
     String newEmail = "newadmin@gmail.com";
     assertTrue(repository.changeUserEmail("admin", newEmail));
