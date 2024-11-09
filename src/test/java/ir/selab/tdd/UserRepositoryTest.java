@@ -142,7 +142,6 @@ public class UserRepositoryTest {
     public void findAll__ShouldSuccess() {
 
         List<User> users = repository.findAll();
-        System.out.println(users);
         assertEquals(3, users.size());
         assertEquals("admin", users.get(0).getUsername());
         assertEquals("1234", users.get(0).getPassword());
